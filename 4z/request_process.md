@@ -1,5 +1,5 @@
 ####   Nginx请求流程
-![image](https://coding.net/u/aminglinux/p/nginx/git/raw/master/4z/nginx_phase.png)
+![image](https://github.com/chensslinux/nginx/blob/master/4z/nginx_phase.png)
 
 ####   Nginx各phase对应的模块
 | phase      | 对应模块    |
