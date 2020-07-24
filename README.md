@@ -1,1 +1,1 @@
-![image](https://coding.net/u/aminglinux/p/nginx/git/raw/master/Nginx_dg.png)
+![image](https://github.com/chensslinux/nginx/blob/master/Nginx_dg.png)
