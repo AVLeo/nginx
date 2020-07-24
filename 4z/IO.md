@@ -1,4 +1,4 @@
-![img](https://coding.net/u/aminglinux/p/nginx/git/raw/master/4z/event2.png)
+![img](https://github.com/chensslinux/nginx/blob/master/4z/event2.png)
 
 #####     同步机制
 
