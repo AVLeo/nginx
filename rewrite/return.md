@@ -58,7 +58,7 @@
     server{
         listen 80;
         server_name www.aming.com;
-        return http://www.aminglinux.com/123.html;
+        return http://www.aminglinux.com/123.html;  //连接前面可以加301 302不加默认是302
         rewrite /(.*) /abc/$1;  //该行配置不会被执行。
     }
     注意：return后面的url必须是以http://或者https://开头的。
