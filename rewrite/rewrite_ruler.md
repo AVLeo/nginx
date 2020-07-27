@@ -22,7 +22,7 @@
 #####     示例2
 
     location / {
-        rewrite /.* http://www.aming.com$request_uri permanent;
+        rewrite /.* http://www.aming.com$request_uri permanent;  //.*就是request_uri
     }
     说明：在replacement中，支持变量，这里的$request_uri就是客户端请求的链接
     
