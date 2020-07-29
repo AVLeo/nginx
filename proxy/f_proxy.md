@@ -1,28 +1,28 @@
 #### Nginx反向代理配置
 
-```
-Nginx反向代理在生产环境中使用很多的。
 
-场景1：
-域名没有备案，可以把域名解析到香港一台云主机上，在香港云主机做个代理，而网站数据是在大陆的服务器上。
+	Nginx反向代理在生产环境中使用很多的。
+	
+	场景1：
+	域名没有备案，可以把域名解析到香港一台云主机上，在香港云主机做个代理，而网站数据是在大陆的服务器上。
+	
+	示例1：
+	server 
+	{
+	    listen 80;
+	    server_name aminglinux.com;
+	    
+	    location /
+	    {
+	        proxy_pass http://123.23.13.11/;
+	        proxy_set_header Host   $host;
+	        proxy_set_header X-Real-IP      $remote_addr;
+	        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	    }
+	}
 
-示例1：
-server 
-{
-    listen 80;
-    server_name aminglinux.com;
-    
-    location /
-    {
-        proxy_pass http://123.23.13.11/;
-        proxy_set_header Host   $host;
-        proxy_set_header X-Real-IP      $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-}
-```
 #####    配置说明
-#####    #1. proxy_pass
+#####    1. proxy_pass
 
     在正向代理中，已经使用过该指令。
     格式很简单： proxy_pass  URL;
@@ -75,7 +75,7 @@ server
     示例5：http://192.168.1.10/linuxa.html
     
 
-#####    #2. proxy_set_header
+#####    2. proxy_set_header
 ```
 proxy_set_header用来设定被代理服务器接收到的header信息。
 
@@ -121,7 +121,7 @@ server {
 }
 
 ```
-#####    #3. proxy_redirect
+#####    3. proxy_redirect
 ```
 该指令用来修改被代理服务器返回的响应头中的Location头域和“refresh”头域。
 语法结构为：
