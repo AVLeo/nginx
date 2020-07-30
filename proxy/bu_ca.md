@@ -15,7 +15,7 @@ proxy_buffering主要是实现被代理服务器的数据和客户端的请求�
 相反，如果proxy_buffering关闭，C反馈的数据实时地通过B传输给A。
 ```
 
-#####      #以下配置，都是针对每一个http请求的。
+#####      以下配置，都是针对每一个http请求的。
 ```
 1. proxy_buffering  on;
 该参数设置是否开启proxy的buffer功能，参数的值为on或者off。
@@ -30,6 +30,7 @@ proxy_buffering主要是实现被代理服务器的数据和客户端的请求�
 3. proxy_buffers  8  4k;
 这个参数设置存储被代理服务器上的数据所占用的buffer的个数和每个buffer的大小。
 所有buffer的大小为这两个数字的乘积。
+这个是存A上反馈数据的buffer, 8是个数，4k是每个buffer的大小
 
 4. proxy_busy_buffer_size 16k;
 在所有的buffer里，我们需要规定一部分buffer把自己存的数据传给A，这部分buffer就叫做busy_buffer。
@@ -87,7 +88,7 @@ A请求B时，B会把缓存的这些数据直接给A，而不需要再去向C去
 proxy_cache相关功能生效的前提是，需要设置proxy_buffering on;
 
 ```
-#####      #proxy_cache主要参数
+#####      proxy_cache主要参数
 ```
 1. proxy_cache
 语法：proxy_cache zone|off
