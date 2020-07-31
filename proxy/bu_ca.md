@@ -30,7 +30,7 @@ proxy_buffering主要是实现被代理服务器的数据和客户端的请求�
 3. proxy_buffers  8  4k;
 这个参数设置存储被代理服务器上的数据所占用的buffer的个数和每个buffer的大小。
 所有buffer的大小为这两个数字的乘积。
-这个是存A上反馈数据的buffer, 8是个数，4k是每个buffer的大小
+这个是存A上反馈数据的buffer, 8是个数，4k是每个buffer的大小，这是针对一个请求的，如果有1万个请求，就是10000x8个
 
 4. proxy_busy_buffer_size 16k;
 在所有的buffer里，我们需要规定一部分buffer把自己存的数据传给A，这部分buffer就叫做busy_buffer。
