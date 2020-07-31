@@ -23,3 +23,12 @@ error_log  /var/log/nginx/error.log crit;
 如果要想彻底关闭error_log，需要这样配置
 error_log /dev/null;
 ```
+
+#####  Nginx错误日志试验结果
+```
+
+1 如果main   server  location里都配置了错误日志，那么只有location会记录
+
+2 如果只有main   server 里都配置了错误日志，那么只有server里会记录
+
+```
