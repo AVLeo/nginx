@@ -12,23 +12,37 @@
 
 # touch index.txt  //创建index.txt
 
-# cd ..
+# cd /etc/pki/tls
+```
 
-# vi tls/openssl.cnf  //改配置文件
+
+- 改配置文件
+```
+vi openssl.cnf  //改配置文件
+
 default_ca     = CA_default 改为 default_ca     = CA_test
 [ CA_default ] 改为 [ CA_test ]
 dir             = /etc/pki/CA  改为  dir             = /etc/pki/ca_test
 certificate	= $dir/cacert.pem  改为 certificate	= $dir/root/ca.crt
-private_key	= $dir/private/cakey.pe 改为  private_key	= $dir/root/ca.key
+private_key	= $dir/private/cakey.pem  改为  private_key	= $dir/root/ca.key
 
-# openssl genrsa -out /etc/pki/ca_test/root/ca.key  //生成私钥
+```
 
+
+- 生成私钥
+```
+# openssl genrsa -out /etc/pki/ca_test/root/ca.key  
+```
+- 生成请求文件
+```
 # openssl req -new -key /etc/pki/ca_test/root/ca.key -out /etc/pki/ca_test/root/ca.csr   
 //生成请求文件，会让我们填写一些指标,这里要注意：如果在这一步填写了相应的指标，
 比如Country Name、State or Province Name、hostname。
-
+```
+- 生成crt文件
+```
 # openssl x509 -req -days 3650 -in /etc/pki/ca_test/root/ca.csr -signkey /etc/pki/ca_test/root/ca.key -out /etc/pki/ca_test/root/ca.crt 
-//生成crt文件
+
 ```
 
 #####   生成server端证书
