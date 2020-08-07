@@ -1,4 +1,4 @@
-#####   生成CA根证书
+####   生成CA根证书
 ```
 # mkdir /etc/pki/ca_test //创建CA更证书的目录
 
@@ -45,22 +45,28 @@ private_key	= $dir/private/cakey.pem  改为  private_key	= $dir/root/ca.key
 
 ```
 
-#####   生成server端证书
+####   生成server端证书
 ```
 # cd /etc/pki/ca_test/server
+```
+- 生成私钥文件
+```
+# openssl genrsa -out server.key 
+```
 
-# openssl genrsa -out server.key   //生成私钥文件
-
-# openssl req -new -key server.key -out server.csr//生成证书请求文件，填写信息需要和ca.csr中的Organization Name保持一致
-
-# openssl ca -in server.csr -cert /etc/pki/ca_test/root/ca.crt -keyfile /etc/pki/ca_test/root/ca.key -out server.crt -days 3650  
-//用根证书签名server.csr，最后生成公钥文件server.crt，此步骤会有两个地方需要输入y
+- 生成证书请求文件，填写信息需要和ca.csr中的Organization Name保持一致
+```
+# openssl req -new -key server.key -out server.csr
+```
+- 用根证书签名server.csr，最后生成公钥文件server.crt
+```
+# openssl ca -in server.csr -cert /etc/pki/ca_test/root/ca.crt -keyfile /etc/pki/ca_test/root/ca.key -out server.crt -days 3650  //此步骤会有两个地方需要输入y
 Sign the certificate? [y/n]:y
 1 out of 1 certificate requests certified, commit? [y/n]y
 
 ```
-
-#####   生成客户端证书
+- nginx配置ssl用到文件就是 server.key   server.crt
+####   生成客户端证书
 ```
 如果做ssl的双向认证，还需要给客户端生成一个证书，步骤和上面的基本一致
 # cd /etc/pki/ca_test/client
